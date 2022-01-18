@@ -1,4 +1,4 @@
-Project name: Agenda
-Project's Description : Agenda Web para se planejar.
-Environment and tools * 
-Steps to run and debug * 
+Project name: Agenda <br />
+Project's Description : Agenda Web para se planejar. <br />
+Environment and tools *  <br />
+Steps to run and debug * <br /> 
