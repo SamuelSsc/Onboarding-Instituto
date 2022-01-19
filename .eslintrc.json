@@ -13,7 +13,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "React",
+        "react",
         "@typescript-eslint"
     ],
     "rules": {
