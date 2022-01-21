@@ -4,7 +4,7 @@ import { ValidarLogin } from "./valida_login";
 
 export function Login(): JSX.Element{
   return(
-    <Forms method="POST">          
+    <Forms id="Forms" method="POST">          
               
       <h1>Bem Vindo(a) à Taqtile!!</h1>    
       <Label >E-mail:</Label>
@@ -13,7 +13,8 @@ export function Login(): JSX.Element{
       <Label>Senha:</Label>
       <Input id="senha" placeholder="Digite sua Senha" type="password"></Input>
 
-      <Button onClick={ValidarLogin} type="submit" >Entrar</Button>
+      <Button id="btnEntrar" onClick={ValidarLogin} type="submit" >Entrar</Button>
+
   </Forms>
   
   );
