@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Forms, Input, Label } from "./style";
+import { Button, Forms, Input, Label } from "./login.component.style";
 import { ValidarLogin } from "./valida_login";
 
 export function Login(): JSX.Element{
