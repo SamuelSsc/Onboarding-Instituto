@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  /*o ApolloProvider envolve seu aplicativo acessandode qualquer lugar em sua árvore de componentes.*/
+  
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
   document.getElementById('root')
 );
+
+
+  
+
+  
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

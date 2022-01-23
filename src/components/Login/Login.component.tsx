@@ -2,14 +2,14 @@ import React from "react";
 import { Button, Forms, Input, Label } from "./login.component.style.ts";
 
 
-export function Login(): JSX.Element{
+
+function Login(): JSX.Element{
   return(
     <Forms id="Forms" >          
-              
+                
       <h1>Bem Vindo(a) à Taqtile!!</h1>    
       <Label >E-mail:</Label>
       <Input 
-        id="email" 
         placeholder="Email@example.com.br" 
         type="email"
         required
@@ -20,8 +20,7 @@ export function Login(): JSX.Element{
       </Input>
 
       <Label>Senha:</Label>
-      <Input 
-        id="senha" 
+      <Input  
         placeholder="Digite sua Senha" 
         type="password"
         required
@@ -31,13 +30,11 @@ export function Login(): JSX.Element{
 
       <Button id="btnEntrar"  type="submit" >Entrar</Button>
 
-  </Forms>
+    </Forms>
+    
   
-  
-  );
-  
+    );
 }
-
 
 
 export default Login;
