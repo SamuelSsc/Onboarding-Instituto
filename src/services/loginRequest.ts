@@ -2,15 +2,8 @@ import { gql } from '@apollo/client';
 
 
 
-/*{
-    "data":{
-        "email":"admin@taqtile.com.br",
-        "password": "1234qwer"
-    }
-}*/
-
-export const queryLogar = gql`
-    
+/*Definindo qual será a consulta realizada.*/
+export const queryLogar = gql`   
     mutation logar($email: String, $password:String!){
         logar(data: {email: $email password: $password}){
             token
@@ -21,3 +14,11 @@ export const queryLogar = gql`
         }
     }
 `;
+
+
+/*{
+    "data":{
+        "email":"admin@taqtile.com.br",
+        "password": "1234qwer"
+    }
+}*/

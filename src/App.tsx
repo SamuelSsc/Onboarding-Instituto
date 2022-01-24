@@ -12,25 +12,15 @@ import {
 
 /*Inicializando o Apollo Cliente passando uma config de URL e cache*/
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  uri: 'https://tq-template-server-sample.herokuapp.com/graphql',
   cache: new InMemoryCache()
 });
-
-
-const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
-    }
-  }
-`;
-
 
 
 /*Eslint solicitou que adcionasse o JSX.Element*/
 function App(): JSX.Element {
   return (
+    /*Envolvendo a aplicação React com o Apollo Client*/
     <ApolloProvider client={client}>
       <Login />
     </ApolloProvider>

@@ -1,15 +1,22 @@
 import React from "react";
 import { Button, Forms, Input, Label } from "./login.component.style.ts";
-
-
+import logRequest from "../../hooks/loginUser";
 
 function Login(): JSX.Element{
+
   return(
-    <Forms id="Forms" >          
+    /* Manipulador onSubmit do formulario chama a function Mutate (arrayLog) que é retornada pelo Hook*/
+    <Forms id="Forms"  
+    onSubmit={e => {
+      e.preventDefault();
+      arrayLog({ variables: { email: email, password: password } });
+      (e.target.value);
+    }}>          
                 
       <h1>Bem Vindo(a) à Taqtile!!</h1>    
       <Label >E-mail:</Label>
       <Input 
+        name= "email"
         placeholder="Email@example.com.br" 
         type="email"
         required
@@ -21,6 +28,7 @@ function Login(): JSX.Element{
 
       <Label>Senha:</Label>
       <Input  
+        name= "Password"
         placeholder="Digite sua Senha" 
         type="password"
         required
@@ -28,7 +36,7 @@ function Login(): JSX.Element{
         title="Sua Senha deve possuir no minimo 7 caracteres, com pelo menos 1 letra e 1 numero">
       </Input>
 
-      <Button id="btnEntrar"  type="submit" >Entrar</Button>
+      <Button id="btnEntrar" onClick={logRequest} type="submit" >Entrar</Button>
 
     </Forms>
     
