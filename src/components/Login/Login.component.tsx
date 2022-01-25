@@ -1,21 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Forms, Input, Label } from "./login.component.style.ts";
-import logRequest from "../../hooks/loginUser";
+import { useEffect } from "react";
+import { ApolloError, useMutation } from "@apollo/client";
+import { queryLogar } from "../../services/loginRequest";
+
 
 function Login(): JSX.Element{
+  
+  const [email, setEmail] = useState("") /*email inicia como uma String vazia*/
+  const [password, setPassword] = useState("")
+
+
+  const  [ login, { data, loading, error } ]= useMutation(queryLogar,{
+    onError: (error: ApolloError) => {
+      alert("Login ou Senha invalido.")
+      console.log(error)
+    },
+    onCompleted: (e:any) => {
+      alert("Bem Vindo Usuario")
+      console.log(e)
+    }
+
+  });
+
+  function enviarForm(e:{preventDefault:()=>void}){ 
+    e.preventDefault();
+    console.log(email);
+    console.log(password)
+    login({variables:{
+     data:{email, password}
+    } })
+  }
 
   return(
-    /* Manipulador onSubmit do formulario chama a function Mutate (arrayLog) que é retornada pelo Hook*/
-    <Forms id="Forms"  
-    onSubmit={e => {
-      e.preventDefault();
-      arrayLog({ variables: { email: email, password: password } });
-      (e.target.value);
-    }}>          
-                
+
+    /* Manipulador onSubmit do formulario chama o evento enviarForm*/ 
+    <Forms
+    onSubmit= {enviarForm} >          
+
       <h1>Bem Vindo(a) à Taqtile!!</h1>    
       <Label >E-mail:</Label>
-      <Input 
+      <Input
+
+        /*onChange(evento) pega o valor que foi digitado no Input, quando o valor é alterado chamando a função de manipulação de State.*/
+        onChange={(e)=> setEmail(e.target.value)}
+        value={email} /*Esta linha Serve para associar o valor do input ao State de email.*/
         name= "email"
         placeholder="Email@example.com.br" 
         type="email"
@@ -27,16 +56,18 @@ function Login(): JSX.Element{
       </Input>
 
       <Label>Senha:</Label>
-      <Input  
+      <Input 
+        onChange={(e)=> setPassword(e.target.value)}
+        value={password}
         name= "Password"
         placeholder="Digite sua Senha" 
         type="password"
         required
-        pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{7,}$/"
+        pattern= "(^(?=.*\d)(?=.*[a-zA-Z]).{7,}$)"
         title="Sua Senha deve possuir no minimo 7 caracteres, com pelo menos 1 letra e 1 numero">
       </Input>
 
-      <Button id="btnEntrar" onClick={logRequest} type="submit" >Entrar</Button>
+      <Button type="submit" >Entrar</Button>
 
     </Forms>
     
