@@ -6,9 +6,9 @@ import { WorkPage } from "./pages/WorkPage";
 
 export default function MyRoutes(){
     return(
-            <Routes>
-                <Route path=" /" element={<Pagetest/>}></Route>
-                <Route path=" /work" element={<WorkPage/>}></Route>
-            </Routes>
+        <Routes>
+            <Route path=" /" element={<Pagetest/>}></Route>
+            <Route path=" /work" element={<WorkPage/>}></Route>
+        </Routes>
     )
 }
