@@ -3,6 +3,7 @@ import { Button, Forms, Input, Label } from "./login.component.style.ts";
 import { useEffect } from "react";
 import { ApolloError, useMutation } from "@apollo/client";
 import { queryLogar } from "../../services/loginRequest";
+import { Token } from "graphql";
 
 
 function Login(): JSX.Element{
@@ -11,22 +12,30 @@ function Login(): JSX.Element{
   const [password, setPassword] = useState("")
 
 
+  /*Array (login) recebe a tupla de resposta da query ou o erro ao consultar o playground*/
   const  [ login, { data, loading, error } ]= useMutation(queryLogar,{
     onError: (error: ApolloError) => {
       alert("Login ou Senha invalido.")
       console.log(error)
     },
-    onCompleted: (e:any) => {
-      alert("Bem Vindo Usuario")
+
+
+    /*se o login completar ele exibe as informações que serão trazidas no console.log seja ela qual for com o(e:any) */
+    onCompleted: (e:any) => { 
+      let tokenvalue =  e.login.token;
+      const [,token] = tokenvalue.split(" ")  /*desestruturando o token para tirar o bearer*/
+      localStorage.setItem("token", token);
+      alert("Bem Vindo Usuario!!")
       console.log(e)
+
     }
 
   });
 
+  /*(e:{preventDefault:()=>void}) ==> indica que a função prevent default abaixo não retorna nenhum valor*/
   function enviarForm(e:{preventDefault:()=>void}){ 
-    e.preventDefault();
-    console.log(email);
-    console.log(password)
+    e.preventDefault(); 
+    /*passando as variaveis que vão para query exatamente como foi declarada nela no arquivo de request*/
     login({variables:{
      data:{email, password}
     } })

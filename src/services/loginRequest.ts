@@ -14,11 +14,3 @@ mutation login($data: LoginInputType!){
     }
 }
 `;
-
-
-/*{
-    "data":{
-        "email":"admin@taqtile.com.br",
-        "password": "1234qwer"
-    }
-}*/

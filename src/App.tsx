@@ -9,6 +9,8 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
+import { BrowserRouter, Router, Routes } from "react-router-dom";
+
 
 /*Inicializando o Apollo Cliente passando uma config de URL e cache*/
 const client = new ApolloClient({
@@ -22,7 +24,9 @@ function App(): JSX.Element {
   return (
     /*Envolvendo a aplicação React com o Apollo Client*/
     <ApolloProvider client={client}>
-      <Login />
+      <BrowserRouter />
+        <Login/>
+      <BrowserRouter />
     </ApolloProvider>
   );
 }
