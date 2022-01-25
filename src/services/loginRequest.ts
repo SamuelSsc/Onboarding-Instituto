@@ -2,17 +2,17 @@ import { gql } from '@apollo/client';
 
 
 
-/*Definindo qual será a consulta realizada.*/
+/*Definindo qual será a Mutation realizada.*/
 export const queryLogar = gql`   
-    mutation logar($email: String, $password:String!){
-        logar(data: {email: $email password: $password}){
-            token
-            user{
-                email
-                password   
-            }
+mutation login($data: LoginInputType!){
+    login(data: $data){
+        token
+        user{
+            name
+            email
         }
     }
+}
 `;
 
 
