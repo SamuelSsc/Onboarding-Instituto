@@ -1,7 +1,11 @@
 import React from "react";
 
 export function WorkPage() {
+    
     return(
-        <h1>Workspace</h1>
+        <section>
+            <h1>Workspace</h1>
+            <button>Logout</button>
+        </section>
     )
 }

@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import MyRoutes from './routes';
 
 
 ReactDOM.render(
-
-  
-  /*o ApolloProvider envolve seu aplicativo acessandode qualquer lugar em sua árvore de componentes.*/
     <React.StrictMode>
       <App />
     </React.StrictMode>,

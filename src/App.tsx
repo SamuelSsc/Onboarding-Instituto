@@ -25,9 +25,7 @@ function App(): JSX.Element {
   return (
     /*Envolvendo a aplicação React com o Apollo Client*/
     <ApolloProvider client={client}>
-      <BrowserRouter />
-        <Login />
-      <BrowserRouter />
+      <MyRoutes />
     </ApolloProvider>
   );
 }

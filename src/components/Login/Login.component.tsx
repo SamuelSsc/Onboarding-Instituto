@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { ApolloError, useMutation } from "@apollo/client";
 import { queryLogar } from "../../services/loginRequest";
 import { Token } from "graphql";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 function Login(): JSX.Element{
   
   const [email, setEmail] = useState("") /*email inicia como uma String vazia*/
   const [password, setPassword] = useState("")
+  const navigate = useNavigate();
 
 
   /*Array (login) recebe a tupla de resposta da query ou o erro ao consultar o playground*/
@@ -27,7 +29,7 @@ function Login(): JSX.Element{
       localStorage.setItem("token", token);
       alert("Bem Vindo Usuario!!")
       console.log(e)
-
+      navigate("/Workspace")
     }
 
   });
