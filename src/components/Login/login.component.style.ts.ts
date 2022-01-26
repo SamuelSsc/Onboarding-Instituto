@@ -34,5 +34,5 @@ color: white;
 border-style: none ;
 height: 50px;
 width: 100px;
-font: bold 15px arial, sans-serif;    
+font: bold 15px arial, sans-serif;   
 `;

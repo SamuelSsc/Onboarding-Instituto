@@ -12,15 +12,17 @@ function Login(): JSX.Element{
   const [email, setEmail] = useState("") /*email inicia como uma String vazia*/
   const [password, setPassword] = useState("")
   const navigate = useNavigate();
+  const [loadinbtn, setLoadingbtn] = useState(false);
 
 
   /*Array (login) recebe a tupla de resposta da query ou o erro ao consultar o playground*/
   const  [ login, { data, loading, error } ]= useMutation(queryLogar,{
-    onError: (error: ApolloError) => {
-      alert("Login ou Senha invalido.")
-      console.log(error)
-    },
 
+    onError: (error: ApolloError) => {
+      alert("Login ou Senha invalido, Por gentileza inserir novamente...")
+      console.log(error)
+      setLoadingbtn(false);
+    },
 
     /*se o login completar ele exibe as informações que serão trazidas no console.log seja ela qual for com o(e:any) */
     onCompleted: (e:any) => { 
@@ -37,6 +39,8 @@ function Login(): JSX.Element{
   /*(e:{preventDefault:()=>void}) ==> indica que a função prevent default abaixo não retorna nenhum valor*/
   function enviarForm(e:{preventDefault:()=>void}){ 
     e.preventDefault(); 
+
+    setLoadingbtn(true);
     /*passando as variaveis que vão para query exatamente como foi declarada nela no arquivo de request*/
     login({variables:{
      data:{email, password}
@@ -78,7 +82,10 @@ function Login(): JSX.Element{
         title="Sua Senha deve possuir no minimo 7 caracteres, com pelo menos 1 letra e 1 numero">
       </Input>
 
-      <Button type="submit" >Entrar</Button>
+      <Button type="submit" disabled={loadinbtn}>
+        {loadinbtn? "Loading..." : "Entrar"}
+      </Button>
+
 
     </Forms>
     
