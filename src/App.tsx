@@ -1,9 +1,10 @@
 import React from "react";
+import Login from "./components/Login/Login.component";
 
 /*Eslint solicitou que adcionasse o JSX.Element*/
 function App(): JSX.Element {
   return (
-    <h1>Hello Word!!!</h1>
+    <Login />
   );
 }
 
