@@ -27,7 +27,7 @@ function Login(): JSX.Element{
       localStorage.setItem("token", tokenvalue  );
       alert("Bem Vindo Usuario!!")
       console.log(e)
-      navigate("/Workspace")
+      navigate("/Userspage")
     }
 
   });
@@ -48,8 +48,7 @@ function Login(): JSX.Element{
     /* Manipulador onSubmit do formulario chama o evento enviarForm*/ 
     <Forms
     onSubmit= {enviarForm} >          
-
-      <h1>Bem Vindo(a) à Taqtile!!</h1>    
+  
       <Label >E-mail:</Label>
       <Input
 
