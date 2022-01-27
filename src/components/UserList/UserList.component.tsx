@@ -1,7 +1,19 @@
 import React from "react";
+import { getUsersquery } from "../../services/getUsersRequest";
 import { Container, Contents, Subtitle, Ul} from "./UserList.component.styled";
+import { useQuery } from "@apollo/client";
 
-export function UserList() {
+export function UserList(): JSX.Element {
+    
+
+    function getUsers() {
+        const { loading, error, data } = useQuery(getUsersquery);
+        if (loading) return 'Loading...';
+        if (error) return `Error! ${error.message}`;
+        console.log(data)
+    }
+
+    getUsers()
     return(
     <section>
         <Subtitle>Lista de Usuarios</Subtitle>
@@ -12,7 +24,8 @@ export function UserList() {
 
                 <Ul>
                     <li>
-                        <strong>Nome:</strong><br/>Samuel Santana de Camargo.
+                        <strong>NOME:</strong><br/>
+                        
                     </li>
                     <li>
                         <strong>E-mail:</strong><br/> SamuelSsc58748392@gmai.com
@@ -20,6 +33,8 @@ export function UserList() {
                 </Ul>
 
             </Contents>
+
+            
 
         </Container>
     </section>
