@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PageLogin } from "./pages/PageLogin";
 import { WorkPage } from "./pages/WorkPage";
 
-export default function MyRoutes(){
+export function MyRoutes(){
     return(
         <BrowserRouter>
             <Routes>

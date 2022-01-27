@@ -10,7 +10,7 @@ import {
   gql
 } from "@apollo/client";
 import { BrowserRouter, Router, Routes } from "react-router-dom";
-import MyRoutes from "./routes";
+import {MyRoutes} from "./routes";
 
 
 /*Inicializando o Apollo Cliente passando uma config de URL e cache*/
