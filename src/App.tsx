@@ -9,7 +9,6 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
-import { BrowserRouter, Router, Routes } from "react-router-dom";
 import {MyRoutes} from "./routes";
 
 
