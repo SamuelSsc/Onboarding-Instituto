@@ -5,9 +5,6 @@ import reportWebVitals from './reportWebVitals';
 
 
 ReactDOM.render(
-
-  
-  /*o ApolloProvider envolve seu aplicativo acessandode qualquer lugar em sua árvore de componentes.*/
     <React.StrictMode>
       <App />
     </React.StrictMode>,
