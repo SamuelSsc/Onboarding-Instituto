@@ -26,7 +26,6 @@ function Login(): JSX.Element{
       let tokenvalue =  e.login.token;
       localStorage.setItem("token", tokenvalue  );
       alert("Bem Vindo Usuario!!")
-      console.log(e)
       navigate("/Userspage")
     }
 

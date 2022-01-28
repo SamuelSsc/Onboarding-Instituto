@@ -5,13 +5,18 @@ import { useQuery } from "@apollo/client";
 
 export function UserList(): JSX.Element {
     
-
-    function getUsers() {
-        const { loading, error, data } = useQuery(getUsersquery);
-        if (loading) return 'Loading...';
-        if (error) return `Error! ${error.message}`;
-        console.log(data)
+    function getUsers(){
+        const token = localStorage.token
+        const { loading, error, data } = useQuery(getUsersquery,{
+            context:{
+                headers:{
+                    Authorization: token,
+                },
+            },
+        });
+        return console.log(data)      
     }
+    
 
     getUsers()
     return(
@@ -21,7 +26,7 @@ export function UserList(): JSX.Element {
 
             <Contents>
                 <h3>USERS</h3>
-
+                
                 <Ul>
                     <li>
                         <strong>NOME:</strong><br/>

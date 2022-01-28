@@ -8,6 +8,7 @@ query users($pageInfo: PageInputType){
     users(pageInfo: $pageInfo){
     nodes{
       name
+      email
     }
     }
   }
