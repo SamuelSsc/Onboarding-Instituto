@@ -14,9 +14,12 @@ export function UserList(): JSX.Element {
                 },
             },
         });
-        return console.log(data)      
+
+        let usersInformation = data?.users?.nodes?.map((users: { name: any; email: any; }) => users);
+        
+        
+        return console.log(usersInformation);
     }
-    
 
     getUsers()
     return(
@@ -30,6 +33,7 @@ export function UserList(): JSX.Element {
                 <Ul>
                     <li>
                         <strong>NOME:</strong><br/>
+                        <p></p>
                         
                     </li>
                     <li>
