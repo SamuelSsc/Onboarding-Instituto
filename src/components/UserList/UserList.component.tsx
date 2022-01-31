@@ -2,19 +2,11 @@ import React  from "react";
 import { getUsersquery } from "../../services/getUsersRequest";
 import { Container, Contents, Subtitle, Ul} from "./UserList.component.styled";
 import { useQuery } from "@apollo/client";
-import { useEffect } from "react";
 
 export function UserList(): JSX.Element {
 
-    let usersemail 
-    let usersname
     let usersInformation
 
-    /*useEffect(() => {
-        document.write(usersname)
-    }, [usersname])*/
-
-   
         const token = localStorage.token
         const { data } = useQuery(getUsersquery,{
             context:{
