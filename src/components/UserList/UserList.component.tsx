@@ -1,20 +1,27 @@
 import React  from "react";
 import { getUsersquery } from "../../services/getUsersRequest";
-import { Container, Contents, Subtitle, Ul} from "./UserList.component.styled";
+import { BTNavegation, Container, Contents, Navegation, Subtitle, Ul} from "./UserList.component.styled";
 import { useQuery } from "@apollo/client";
 
 export function UserList(): JSX.Element {
 
     let usersInformation
 
-        const token = localStorage.token
+        const token = localStorage.token   
+        const limit = 12;
+        let offset = 0;
         const { data } = useQuery(getUsersquery,{
             context:{
                 headers:{
                     Authorization: token,
                 },
             },
+            variables: {
+                offset,
+                limit,
+              },
         });
+
 
         usersInformation = data?.users?.nodes?.map((users: { name: string; email: string; }) => users);
         
@@ -22,7 +29,21 @@ export function UserList(): JSX.Element {
         const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.email}>{users.email}</p>)
     
 
-    
+        
+        const nextPage = () => {
+            if (offset >= 0){
+               offset =+ 12 
+               console.log(offset)
+            }
+        }
+
+        const previusPage = () => {
+            if (offset >= 12){
+                offset =- 12
+                console.log(offset)
+            }
+        }
+
 
     return(
     <section>
@@ -38,11 +59,14 @@ export function UserList(): JSX.Element {
                         {namesMapped}                       
                     </li>
                     <li>
-                        <strong>E-mail:</strong><br/>
+                        <strong>E-MAIL:</strong><br/>
                         {emailMapped}
                     </li>
                 </Ul>
-
+                <Navegation>
+                    <BTNavegation onClick={previusPage}>Anterior</BTNavegation>
+                    <BTNavegation onClick={nextPage}>Proxima</BTNavegation>
+                </Navegation>
             </Contents>
 
             
@@ -52,6 +76,7 @@ export function UserList(): JSX.Element {
  
     )
 }
+
 
 interface usersType {
     name: string;

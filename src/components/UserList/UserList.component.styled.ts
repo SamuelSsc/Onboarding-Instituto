@@ -25,3 +25,16 @@ export const Ul = styled.ul`
     width: 100%;
     justify-content: space-around;
 `
+
+export const Navegation = styled.div`
+
+`
+
+export const BTNavegation = styled.button`
+    justify-content: center;
+    border-radius: 50px;
+    background-color: #ad4dfc;
+    width: 13%;
+    color:white;
+    margin:10px
+`
