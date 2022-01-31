@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Button, Forms, Input, Label } from "./login.component.style.ts";
 import { useEffect } from "react";
-import { ApolloError, useMutation } from "@apollo/client";
+import { ApolloError, useMutation, useQuery } from "@apollo/client";
 import { queryLogar } from "../../services/loginRequest";
 import { Token } from "graphql";
 import { Navigate, useNavigate } from "react-router-dom";
+import { getUsersquery } from "../../services/getUsersRequest";
 
 
 function Login(): JSX.Element{
@@ -25,16 +26,28 @@ function Login(): JSX.Element{
     onCompleted: (e:any) => { 
       let tokenvalue =  e.login.token;
       localStorage.setItem("token", tokenvalue  );
-      alert("Bem Vindo Usuario!!")
-      navigate("/Userspage")
-    }
+      const token = localStorage.token
+      /*const { data } = useQuery(getUsersquery,{
+          context:{
+            headers:{
+              Authorization: token,
+            },
+          },
+        });*/
 
-  });
+      /*let usersInformation= data?.users?.nodes?.map((users: { name: string; email: string; }) => users);*/
+      alert("Bem Vindo Usuario!!")
+      navigate("/Userspage") 
+     /* return console.log (usersInformation);*/
+      
+    }
+  }
+  );
 
   /*(e:{preventDefault:()=>void}) ==> indica que a função prevent default abaixo não retorna nenhum valor*/
   function enviarForm(e:{preventDefault:()=>void}){ 
     e.preventDefault(); 
-
+    
  
     /*passando as variaveis que vão para query exatamente como foi declarada nela no arquivo de request*/
     login({variables:{

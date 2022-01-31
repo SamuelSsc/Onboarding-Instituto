@@ -1,13 +1,22 @@
-import React from "react";
+import React  from "react";
 import { getUsersquery } from "../../services/getUsersRequest";
 import { Container, Contents, Subtitle, Ul} from "./UserList.component.styled";
 import { useQuery } from "@apollo/client";
+import { useEffect } from "react";
 
 export function UserList(): JSX.Element {
-    
-    function getUsers(){
+
+    let usersemail 
+    let usersname
+    let usersInformation
+
+    /*useEffect(() => {
+        document.write(usersname)
+    }, [usersname])*/
+
+   
         const token = localStorage.token
-        const { loading, error, data } = useQuery(getUsersquery,{
+        const { data } = useQuery(getUsersquery,{
             context:{
                 headers:{
                     Authorization: token,
@@ -15,13 +24,14 @@ export function UserList(): JSX.Element {
             },
         });
 
-        let usersInformation = data?.users?.nodes?.map((users: { name: any; email: any; }) => users);
+        usersInformation = data?.users?.nodes?.map((users: { name: string; email: string; }) => users);
         
-        
-        return console.log(usersInformation);
-    }
+        const namesMapped = usersInformation?.map( (users:usersType) => <p key={users.name}>{users.name}</p>)
+        const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.email}>{users.email}</p>)
+    
 
-    getUsers()
+    
+
     return(
     <section>
         <Subtitle>Lista de Usuarios</Subtitle>
@@ -33,11 +43,11 @@ export function UserList(): JSX.Element {
                 <Ul>
                     <li>
                         <strong>NOME:</strong><br/>
-                        <p></p>
-                        
+                        {namesMapped}                       
                     </li>
                     <li>
-                        <strong>E-mail:</strong><br/> SamuelSsc58748392@gmai.com
+                        <strong>E-mail:</strong><br/>
+                        {emailMapped}
                     </li>
                 </Ul>
 
@@ -50,3 +60,8 @@ export function UserList(): JSX.Element {
  
     )
 }
+
+interface usersType {
+    name: string;
+    email: string;
+  }
