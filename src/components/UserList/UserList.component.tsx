@@ -32,13 +32,15 @@ export function UserList(): JSX.Element {
         let previousPageexists = data?.users?.pageInfo?. hasPreviousPage
         
         const nextPage = () => {
-            setOfsset(offset + 12)
-    
+            if (offset >= 0 && nextPageexists === true ){
+                setOfsset(offset + 12)
+            }
         }
 
         const previusPage = () => {
-            setOfsset(offset - 12)
-            
+            if (offset >= 12){
+                setOfsset(offset - 12)
+            }
         }
 
 
@@ -70,6 +72,8 @@ export function UserList(): JSX.Element {
                     </BTNavegation>
                 </Navegation>
             </Contents>
+
+            
 
         </Container>
     </section>
