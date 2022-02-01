@@ -10,7 +10,7 @@ export function MyRoutes(){
         <BrowserRouter>
             <Routes>
                 <Route path ="/" element={<PageLogin/>} />
-                <Route path="/Userspage" element={<Userspage />}/>
+                <Route path="/userspage" element={<Userspage />}/>
             </Routes>
         </BrowserRouter>
     )
