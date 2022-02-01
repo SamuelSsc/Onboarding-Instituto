@@ -32,7 +32,7 @@ export function UserList(): JSX.Element {
         
         
         const nextPage = () => {
-            if (offset >= 0 && nextPageexists == true ){
+            if (offset >= 0 && nextPageexists === true ){
                 setOfsset(offset + 12)
                console.log(offset)
             }
@@ -67,7 +67,7 @@ export function UserList(): JSX.Element {
                 <Navegation>
                     <BTNavegation onClick={previusPage}>Anterior</BTNavegation>
 
-                    <BTNavegation onClick={nextPage} disabled={nextPageexists == false}>
+                    <BTNavegation onClick={nextPage} disabled={nextPageexists === false}>
                         Proxima
                     </BTNavegation>
                 </Navegation>
