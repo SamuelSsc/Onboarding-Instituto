@@ -24,26 +24,22 @@ export function UserList(): JSX.Element {
 
 
         usersInformation = data?.users?.nodes?.map((users: { name: string; email: string; }) => users);
-        
+
         const namesMapped = usersInformation?.map( (users:usersType) => <p key={users.id}>{users.name}</p>)
-        const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.id}>{users.email}</p>)
+        const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.phone}>{users.email}</p>)
     
         let nextPageexists = data?.users?.pageInfo?. hasNextPage
         let previousPageexists = data?.users?.pageInfo?. hasPreviousPage
-
-        console.log(previousPageexists)
         
         const nextPage = () => {
             if (offset >= 0 && nextPageexists === true ){
                 setOfsset(offset + 12)
-               console.log(offset)
             }
         }
 
         const previusPage = () => {
             if (offset >= 12){
                 setOfsset(offset - 12)
-                console.log(offset)
             }
         }
 
@@ -90,4 +86,5 @@ interface usersType {
     id: number | string;
     name: string;
     email: string;
+    phone: string;
   }
