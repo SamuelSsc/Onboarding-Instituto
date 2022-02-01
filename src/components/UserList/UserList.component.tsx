@@ -1,4 +1,4 @@
-import React  from "react";
+import React, { useState }  from "react";
 import { getUsersquery } from "../../services/getUsersRequest";
 import { BTNavegation, Container, Contents, Navegation, Subtitle, Ul} from "./UserList.component.styled";
 import { useQuery } from "@apollo/client";
@@ -9,7 +9,7 @@ export function UserList(): JSX.Element {
 
         const token = localStorage.token   
         const limit = 12;
-        let offset = 0;
+        const [offset, setOfsset] = useState(0)
         const { data } = useQuery(getUsersquery,{
             context:{
                 headers:{
@@ -25,21 +25,21 @@ export function UserList(): JSX.Element {
 
         usersInformation = data?.users?.nodes?.map((users: { name: string; email: string; }) => users);
         
-        const namesMapped = usersInformation?.map( (users:usersType) => <p key={users.name}>{users.name}</p>)
-        const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.email}>{users.email}</p>)
+        const namesMapped = usersInformation?.map( (users:usersType) => <p key={users.id}>{users.name}</p>)
+        const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.id}>{users.email}</p>)
     
 
         
         const nextPage = () => {
             if (offset >= 0){
-               offset =+ 12 
+                setOfsset(offset + 12)
                console.log(offset)
             }
         }
 
         const previusPage = () => {
             if (offset >= 12){
-                offset =- 12
+                setOfsset(offset - 12)
                 console.log(offset)
             }
         }
@@ -79,6 +79,7 @@ export function UserList(): JSX.Element {
 
 
 interface usersType {
+    id: number | string;
     name: string;
     email: string;
   }
