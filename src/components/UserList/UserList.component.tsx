@@ -29,7 +29,9 @@ export function UserList(): JSX.Element {
         const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.id}>{users.email}</p>)
     
         let nextPageexists = data?.users?.pageInfo?. hasNextPage
-        
+        let previousPageexists = data?.users?.pageInfo?. hasPreviousPage
+
+        console.log(previousPageexists)
         
         const nextPage = () => {
             if (offset >= 0 && nextPageexists === true ){
@@ -65,9 +67,11 @@ export function UserList(): JSX.Element {
                     </li>
                 </Ul>
                 <Navegation>
-                    <BTNavegation onClick={previusPage}>Anterior</BTNavegation>
+                    <BTNavegation onClick={previusPage}  disabled={!previousPageexists}>
+                        Anterior
+                    </BTNavegation>
 
-                    <BTNavegation onClick={nextPage} disabled={nextPageexists === false}>
+                    <BTNavegation onClick={nextPage} disabled={!nextPageexists}>
                         Proxima
                     </BTNavegation>
                 </Navegation>

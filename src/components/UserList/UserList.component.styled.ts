@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../Login/login.component.style.ts";
 
 export const Subtitle = styled.h3`
     text-align:center;
@@ -31,10 +32,13 @@ export const Navegation = styled.div`
 `
 
 export const BTNavegation = styled.button`
-   
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #ad4dfc;
-    width: 13%;
+    width: 80px;
     color:white;
-    margin:10px
+    margin:10px;  
+    :disabled {
+        display: none;
+    }
 `
+
