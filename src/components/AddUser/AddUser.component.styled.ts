@@ -36,8 +36,25 @@ width: 100px;
 font: bold 15px arial, sans-serif;   
 `;
 
+export const Align = styled.div`
+display:flex;
+`
+
+export const ContainerInput = styled.div`
+display:flex;
+margin-top:10px;
+flex-direction:column;
+margin:10px;
+`
+
+export const List = styled.select`
+width: 150px; 
+height: 25px;
+`
+
 export const Inputdata = styled.input`
 border-radius: 10px;
 width: 150px; 
 height: 25px;
 `
+

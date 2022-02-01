@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Forms, Input, Inputdata, Label } from "./AddUser.component.styled";
+import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } from "./AddUser.component.styled";
 
 
 export const AddUser = () =>{
@@ -53,12 +53,23 @@ export const AddUser = () =>{
                 title="Sua Senha deve possuir no minimo 7 caracteres, com pelo menos 1 letra e 1 numero">
             </Input>
 
-        
-            <Label>Data de Nascimento</Label>
-            <Inputdata 
-                type="date"
-                required>
-            </Inputdata>
+            <Align>
+                <ContainerInput>
+                    <Label>Data de Nascimento</Label>
+                    <Inputdata 
+                        type="date"
+                        required>
+                    </Inputdata>
+                </ContainerInput>
+
+                <ContainerInput>
+                    <Label>Role</Label>
+                    <List name="Role">
+                        <option value="valor1">ADMIN</option>
+                        <option value="valor2" >USER</option>
+                    </List>
+                </ContainerInput>
+            </Align>
         
             <Button type="submit">Cadastrar</Button>
     
