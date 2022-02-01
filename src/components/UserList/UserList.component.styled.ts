@@ -31,8 +31,8 @@ export const Navegation = styled.div`
 `
 
 export const BTNavegation = styled.button`
-    justify-content: center;
-    border-radius: 50px;
+   
+    border-radius: 10px;
     background-color: #ad4dfc;
     width: 13%;
     color:white;
