@@ -71,8 +71,6 @@ export function UserList(): JSX.Element {
                 </Navegation>
             </Contents>
 
-            
-
         </Container>
     </section>
  
