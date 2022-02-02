@@ -3,30 +3,38 @@ import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } f
 
 
 export const AddUser = () =>{
-    return  (
 
+
+    return  (
+        
         <Forms >          
             <h3>Crie Uma Conta</h3>
 
 
             <Label >Name:</Label>
             <Input
-                placeholder="Digite seu nome" 
-                type="email"
-                required> 
+                placeholder="Digite seu nome completo" 
+                type="username"
+                required
+                pattern="(\w{3,})"
+                title="Seu nome deve Possuir ao menos 3 caracteres"
+                > 
             </Input>
 
             <Label >Telefone:</Label>
             <Input
                 placeholder="Ex: (DDD)94002-8922" 
-                type="phone"
-                required> 
+                type="tel"
+                required
+                pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$"
+                title="Digite um Numero de telefone válido com no minimo 9 caracteres e o DDD."
+                > 
             </Input>
 
             <Label >E-mail:</Label>
             <Input
                 name= "email"
-                placeholder="Email@example.com.br" 
+                placeholder="email@example.com.br" 
                 type="email"
                 required     
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -46,7 +54,7 @@ export const AddUser = () =>{
             <Label>Confirme sua Senha:</Label>
             <Input 
                 name= "Password"
-                placeholder="Digite sua Senha" 
+                placeholder="Digite a Senha novamente" 
                 type="password"
                 required
                 pattern= "(^(?=.*\d)(?=.*[a-zA-Z]).{7,}$)"
@@ -58,7 +66,11 @@ export const AddUser = () =>{
                     <Label>Data de Nascimento</Label>
                     <Inputdata 
                         type="date"
-                        required>
+                        required
+                        
+                        
+                        title="Somente datas anteriores"
+                        >
                     </Inputdata>
                 </ContainerInput>
 
@@ -76,5 +88,6 @@ export const AddUser = () =>{
     
         </Forms>
     )
+   
     
 }
