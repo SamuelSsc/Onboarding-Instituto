@@ -1,28 +1,9 @@
-import React from 'react'
-import {
-  Align,
-  Button,
-  ContainerInput,
-  Forms,
-  Input,
-  Inputdata,
-  Label,
-  List,
-} from './AddUser.component.styled'
+import React from 'react';
+import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } from './AddUser.component.styled';
 
 export const AddUser = () => {
-  const gettoday = new Date()
-  const day = String(gettoday.getDate()).padStart(2, '0')
-  const month = String(gettoday.getMonth() + 1).padStart(2, '0')
-  const year = gettoday.getFullYear()
-
-  const today = year + '-' + month + '-' + day
-
-  console.log(day)
-  console.log(month)
-  console.log(year)
-  console.log(today)
-  console.log(gettoday)
+  const today = new Date().toISOString().split('T')[0];
+  console.log(today);
 
   return (
     <Forms>
@@ -65,7 +46,7 @@ export const AddUser = () => {
         title='Sua Senha deve possuir no minimo 7 caracteres, com pelo menos 1 letra e 1 numero'
       ></Input>
 
-      <Label>Confirme sua Senha:</Label>
+      <Label>Repita a Senha:</Label>
       <Input
         name='Password'
         placeholder='Digite a Senha novamente'
@@ -92,5 +73,5 @@ export const AddUser = () => {
 
       <Button type='submit'>Cadastrar</Button>
     </Forms>
-  )
-}
+  );
+};
