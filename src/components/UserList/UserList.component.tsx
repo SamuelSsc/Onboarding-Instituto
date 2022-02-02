@@ -32,15 +32,13 @@ export function UserList(): JSX.Element {
         let previousPageexists = data?.users?.pageInfo?. hasPreviousPage
         
         const nextPage = () => {
-            if (offset >= 0 && nextPageexists === true ){
-                setOfsset(offset + 12)
-            }
+            setOfsset(offset + 12)
+    
         }
 
         const previusPage = () => {
-            if (offset >= 12){
-                setOfsset(offset - 12)
-            }
+            setOfsset(offset - 12)
+            
         }
 
 
