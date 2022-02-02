@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../Login/login.component.style.ts";
 
 export const Subtitle = styled.h3`
     text-align:center;
@@ -25,3 +26,19 @@ export const Ul = styled.ul`
     width: 100%;
     justify-content: space-around;
 `
+
+export const Navegation = styled.div`
+
+`
+
+export const BTNavegation = styled.button`
+    border-radius: 8px;
+    background-color: #ad4dfc;
+    width: 80px;
+    color:white;
+    margin:10px;  
+    :disabled {
+        display: none;
+    }
+`
+

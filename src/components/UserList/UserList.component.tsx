@@ -1,28 +1,46 @@
-import React  from "react";
+import React, { useState }  from "react";
 import { getUsersquery } from "../../services/getUsersRequest";
-import { Container, Contents, Subtitle, Ul} from "./UserList.component.styled";
+import { BTNavegation, Container, Contents, Navegation, Subtitle, Ul} from "./UserList.component.styled";
 import { useQuery } from "@apollo/client";
 
 export function UserList(): JSX.Element {
 
     let usersInformation
 
-        const token = localStorage.token
+        const token = localStorage.token   
+        const limit = 12;
+        const [offset, setOfsset] = useState(0)
         const { data } = useQuery(getUsersquery,{
             context:{
                 headers:{
                     Authorization: token,
                 },
             },
+            variables: {
+                offset,
+                limit,
+              },
         });
 
-        usersInformation = data?.users?.nodes?.map((users: { name: string; email: string; }) => users);
-        
-        const namesMapped = usersInformation?.map( (users:usersType) => <p key={users.name}>{users.name}</p>)
-        const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.email}>{users.email}</p>)
-    
 
+        usersInformation = data?.users?.nodes?.map((users: { name: string; email: string; }) => users);
+
+        const namesMapped = usersInformation?.map( (users:usersType) => <p key={users.id}>{users.name}</p>)
+        const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.phone}>{users.email}</p>)
     
+        let nextPageexists = data?.users?.pageInfo?. hasNextPage
+        let previousPageexists = data?.users?.pageInfo?. hasPreviousPage
+        
+        const nextPage = () => {
+            setOfsset(offset + 12)
+    
+        }
+
+        const previusPage = () => {
+            setOfsset(offset - 12)
+            
+        }
+
 
     return(
     <section>
@@ -38,11 +56,19 @@ export function UserList(): JSX.Element {
                         {namesMapped}                       
                     </li>
                     <li>
-                        <strong>E-mail:</strong><br/>
+                        <strong>E-MAIL:</strong><br/>
                         {emailMapped}
                     </li>
                 </Ul>
+                <Navegation>
+                    <BTNavegation onClick={previusPage}  disabled={!previousPageexists}>
+                        Anterior
+                    </BTNavegation>
 
+                    <BTNavegation onClick={nextPage} disabled={!nextPageexists}>
+                        Proxima
+                    </BTNavegation>
+                </Navegation>
             </Contents>
 
             
@@ -53,7 +79,10 @@ export function UserList(): JSX.Element {
     )
 }
 
+
 interface usersType {
+    id: number | string;
     name: string;
     email: string;
+    phone: string;
   }
