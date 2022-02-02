@@ -4,6 +4,15 @@ import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } f
 
 export const AddUser = () =>{
 
+    let today
+    let gettoday = new Date()
+    let day = String(gettoday.getDate()).padStart(2,"0")
+    let month = String(gettoday.getMonth()+1).padStart(2,"0")
+    let year = gettoday.getFullYear();
+    
+   
+    today = year + "-" + month + "-" + day;
+
 
     return  (
         
@@ -16,7 +25,6 @@ export const AddUser = () =>{
                 placeholder="Digite seu nome completo" 
                 type="username"
                 required
-                pattern="(\w{3,})"
                 title="Seu nome deve Possuir ao menos 3 caracteres"
                 > 
             </Input>
@@ -67,8 +75,7 @@ export const AddUser = () =>{
                     <Inputdata 
                         type="date"
                         required
-                        
-                        
+                        max={today}
                         title="Somente datas anteriores"
                         >
                     </Inputdata>
