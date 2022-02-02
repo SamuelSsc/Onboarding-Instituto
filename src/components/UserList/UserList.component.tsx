@@ -1,9 +1,16 @@
 import React, { useState }  from "react";
 import { getUsersquery } from "../../services/getUsersRequest";
-import { BTNavegation, Container, Contents, Navegation, Subtitle, Ul} from "./UserList.component.styled";
+import { BTNavegation, BTNcreateusers, Container, Contents, Header, Navegation, Subtitle, Ul} from "./UserList.component.styled";
 import { useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 export function UserList(): JSX.Element {
+
+    const navigate = useNavigate();
+
+    const Createuser = () =>{
+        {navigate("/createuser") }
+    }
 
     let usersInformation
 
@@ -46,11 +53,16 @@ export function UserList(): JSX.Element {
 
     return(
     <section>
-        <Subtitle>Lista de Usuarios</Subtitle>
+       
         <Container>
 
             <Contents>
-                <h3>USERS</h3>
+                <Header>
+                <Subtitle>Lista de Usuarios</Subtitle>
+                    <BTNcreateusers onClick={Createuser}>
+                        Novo usuário
+                    </BTNcreateusers>
+                </Header>
                 
                 <Ul>
                     <li>
@@ -70,6 +82,7 @@ export function UserList(): JSX.Element {
                     <BTNavegation onClick={nextPage} disabled={!nextPageexists}>
                         Proxima
                     </BTNavegation>
+
                 </Navegation>
             </Contents>
 
