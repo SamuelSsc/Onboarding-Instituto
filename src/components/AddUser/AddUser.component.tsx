@@ -4,15 +4,20 @@ import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } f
 
 export const AddUser = () =>{
 
-    let today
+   
     let gettoday = new Date()
     let day = String(gettoday.getDate()).padStart(2,"0")
     let month = String(gettoday.getMonth()+1).padStart(2,"0")
     let year = gettoday.getFullYear();
     
    
-    today = year + "-" + month + "-" + day;
+    const today = year + "-" + month + "-" + day;
 
+    console.log(day)
+    console.log(month)
+    console.log(year)
+    console.log(today)
+    console.log(gettoday)
 
     return  (
         

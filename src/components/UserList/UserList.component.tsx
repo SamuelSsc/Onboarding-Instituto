@@ -35,19 +35,15 @@ export function UserList(): JSX.Element {
         const namesMapped = usersInformation?.map( (users:usersType) => <p key={users.id}>{users.name}</p>)
         const emailMapped = usersInformation?.map( (users:usersType) => <p key={users.phone}>{users.email}</p>)
     
-        let nextPageexists = data?.users?.pageInfo?. hasNextPage
-        let previousPageexists = data?.users?.pageInfo?. hasPreviousPage
+        let nextPageexists = data?.users?.pageInfo?.hasNextPage
+        let previousPageexists = data?.users?.pageInfo?.hasPreviousPage
         
         const nextPage = () => {
-            if (offset >= 0 && nextPageexists === true ){
-                setOfsset(offset + 12)
-            }
+            setOfsset(offset + 12)
         }
 
         const previusPage = () => {
-            if (offset >= 12){
-                setOfsset(offset - 12)
-            }
+            setOfsset(offset - 12)
         }
 
 
