@@ -1,33 +1,38 @@
 import { ApolloError, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUserMutation } from '../../services/createUsersRequest';
 import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } from './AddUser.component.styled';
 
 export const AddUser = () => {
   const today = new Date().toISOString().split('T')[0];
+  const navegation = useNavigate();
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [birthdate, setBirthdate] = useState('');
+  const [birthDate, setBirthDate] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
   const [password, setPassword] = useState('');
 
-  const [newUser, { data }] = useMutation(createUserMutation, {
+  const token = localStorage.getItem('token');
+
+  const [newUser, { loading: LoadingBtn }] = useMutation(createUserMutation, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+
     onError: (error: ApolloError) => {
-      alert('deu PAu');
+      alert('DEU ERROOOOOO');
       console.log(error.message);
-      console.log(birthdate);
-      console.log(name);
-      console.log(phone);
-      console.log(email);
-      console.log(role);
-      console.log(password);
-      console.log(data);
     },
 
     onCompleted: (e: any) => {
       alert('Usuario Cadastrado com Sucesso');
+      console.log(e);
+      navegation('/userspage');
     },
   });
 
@@ -36,7 +41,7 @@ export const AddUser = () => {
 
     newUser({
       variables: {
-        data: { name, phone, birthdate, email, role, password },
+        data: { name, phone, birthDate, email, role, password },
       },
     });
   }
@@ -94,8 +99,8 @@ export const AddUser = () => {
         <ContainerInput>
           <Label>Data de Nascimento</Label>
           <Inputdata
-            onChange={(e) => setBirthdate(e.target.value)}
-            value={birthdate}
+            onChange={(e) => setBirthDate(e.target.value)}
+            value={birthDate}
             type='date'
             required
             max={today}
@@ -103,17 +108,16 @@ export const AddUser = () => {
           ></Inputdata>
         </ContainerInput>
 
-        <Input
-          onChange={(e) => setRole(e.target.value)}
-          value={role}
-          name='Role'
-          placeholder='Admin ou User'
-          type='role'
-          required
-        ></Input>
+        <List onChange={(e) => setRole(e.target.value)} value={role} name='Role' placeholder='Admin ou User' required>
+          <option></option>
+          <option value='user'>User</option>
+          <option value='admin'>Admin</option>
+        </List>
       </Align>
 
-      <Button type='submit'>Cadastrar</Button>
+      <Button type='submit' disabled={LoadingBtn}>
+        {LoadingBtn ? 'Loading...' : 'Cadastrar'}
+      </Button>
     </Forms>
   );
 };
