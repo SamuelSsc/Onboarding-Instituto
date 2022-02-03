@@ -1,9 +1,18 @@
-import React from 'react';
-import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } from './AddUser.component.styled';
+import React from 'react'
+import {
+  Align,
+  Button,
+  ContainerInput,
+  Forms,
+  Input,
+  Inputdata,
+  Label,
+  List,
+} from './AddUser.component.styled'
 
 export const AddUser = () => {
-  const today = new Date().toISOString().split('T')[0];
-  console.log(today);
+  const today = new Date().toISOString().split('T')[0]
+  console.log(today)
 
   return (
     <Forms>
@@ -73,5 +82,5 @@ export const AddUser = () => {
 
       <Button type='submit'>Cadastrar</Button>
     </Forms>
-  );
-};
+  )
+}
