@@ -25,8 +25,8 @@ export const AddUser = () => {
     },
 
     onError: (error: ApolloError) => {
-      alert('DEU ERROOOOOO');
-      console.log(error.message);
+      alert(error.message);
+      console.log(error);
     },
 
     onCompleted: (e: any) => {
