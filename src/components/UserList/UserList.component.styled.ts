@@ -53,3 +53,12 @@ export const BTNcreateusers = styled.button`
   color: white;
   margin: 10px;
 `;
+
+export const Details = styled.section`
+  display: flex;
+`;
+
+export const BTNDetails = styled.button`
+  height: 25px;
+  margin: 10px;
+`;
