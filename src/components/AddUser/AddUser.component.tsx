@@ -25,13 +25,11 @@ export const AddUser = () => {
     },
 
     onError: (error: ApolloError) => {
-      alert(error.message);
       console.log(error);
     },
 
     onCompleted: (e: any) => {
       alert('Usuario Cadastrado com Sucesso');
-      console.log(e);
       navegation('/userspage');
     },
   });
