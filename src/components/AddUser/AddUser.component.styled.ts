@@ -33,6 +33,9 @@ export const Button = styled.button`
   height: 50px;
   width: 100px;
   font: bold 15px arial, sans-serif;
+  :disabled {
+    opacity: 0.4;
+  }
 `;
 
 export const Align = styled.div`
@@ -41,12 +44,12 @@ export const Align = styled.div`
 
 export const ContainerInput = styled.div`
   display: flex;
-  margin-top: 10px;
   flex-direction: column;
   margin: 10px;
 `;
 
 export const List = styled.select`
+  margin-top: 58px;
   width: 150px;
   height: 25px;
 `;
