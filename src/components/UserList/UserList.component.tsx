@@ -26,6 +26,10 @@ export function UserList(): JSX.Element {
     }
   };
 
+  const UserDetails = () => {
+    navigate('/userdetail');
+  };
+
   let usersInformation;
 
   const token = localStorage.token;
@@ -47,21 +51,25 @@ export function UserList(): JSX.Element {
 
   const namesMapped = usersInformation?.map((users: usersType) => (
     <Details>
-      <BTNDetails>Details</BTNDetails>
+      <BTNDetails onClick={UserDetails}>Ver</BTNDetails>
       <p key={users.id}>{users.name}</p>
     </Details>
   ));
-  const emailMapped = usersInformation?.map((users: usersType) => <p key={users.phone}>{users.email}</p>);
+  const emailMapped = usersInformation?.map((users: usersType) => (
+    <Details>
+      <p key={users.phone}>{users.email}</p>
+    </Details>
+  ));
 
   let nextPageexists = data?.users?.pageInfo?.hasNextPage;
   let previousPageexists = data?.users?.pageInfo?.hasPreviousPage;
 
   const nextPage = () => {
-    setOfsset(offset + 12);
+    setOfsset(offset + 10);
   };
 
   const previusPage = () => {
-    setOfsset(offset - 12);
+    setOfsset(offset - 10);
   };
 
   return (
