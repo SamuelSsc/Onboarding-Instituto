@@ -14,7 +14,7 @@ export function MyRoutes(){
                 <Route path ="/" element={<PageLogin/>} />
                 <Route path="/userspage" element={<Userspage />}/>
                 <Route path="/createuser" element={<AddUserPage />}/>
-                <Route path="/userdetail" element={<UserDetailpage />}/>
+                <Route path="/userdetail/:id" element={<UserDetailpage />}/>
             </Routes>
         </BrowserRouter>
     )

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Title } from '../components/Header/Header.component';
 import { UserDetail } from '../components/UserDetails/UserDetails.component';
 

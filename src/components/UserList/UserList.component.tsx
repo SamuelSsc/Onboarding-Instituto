@@ -26,8 +26,8 @@ export function UserList(): JSX.Element {
     }
   };
 
-  const UserDetails = () => {
-    navigate('/userdetail');
+  const UserDetails = (id: string | number) => {
+    navigate(`/userdetail/${id}`);
   };
 
   let usersInformation;
@@ -47,12 +47,13 @@ export function UserList(): JSX.Element {
     },
   });
 
-  usersInformation = data?.users?.nodes?.map((users: { name: string; email: string }) => users);
+  usersInformation = data?.users?.nodes?.map((users: { id: string; name: string; email: string }) => users);
 
   const namesMapped = usersInformation?.map((users: usersType) => (
     <Details>
-      <BTNDetails onClick={UserDetails}>Ver</BTNDetails>
+      <BTNDetails onClick={() => UserDetails(users.id)}>Ver</BTNDetails>
       <p key={users.id}>{users.name}</p>
+      <p>{users.id}</p>
     </Details>
   ));
   const emailMapped = usersInformation?.map((users: usersType) => (
