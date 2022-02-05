@@ -1,23 +1,15 @@
-import React from "react";
-import Login from "./components/Login/Login.component";
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
+import React from 'react';
+import Login from './components/Login/Login.component';
 
 /*importando as dependencias do Apollo*/
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
-} from "@apollo/client";
-import {MyRoutes} from "./routes";
-
+import { MyRoutes } from './routes';
 
 /*Inicializando o Apollo Cliente passando uma config de URL e cache*/
 const client = new ApolloClient({
   uri: 'https://tq-template-server-sample.herokuapp.com/graphql',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
-
 
 /*Eslint solicitou que adcionasse o JSX.Element*/
 function App(): JSX.Element {

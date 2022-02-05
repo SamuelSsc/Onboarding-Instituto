@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { Button, Forms, Input, Label } from './login.component.style.ts';
-import { useEffect } from 'react';
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
-import { queryLogar } from '../../services/loginRequest';
 import { Token } from 'graphql';
+import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { getUsersquery } from '../../services/getUsersRequest';
+import { queryLogar } from '../../services/loginRequest';
+import { Button, Forms, Input, Label } from './login.component.style.ts';
 
 function Login(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -19,7 +18,7 @@ function Login(): JSX.Element {
     },
 
     onCompleted: (e: any) => {
-      let tokenvalue = e.login.token;
+      const tokenvalue = e.login.token;
       localStorage.setItem('token', tokenvalue);
       const token = localStorage.token;
 
