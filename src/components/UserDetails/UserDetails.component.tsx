@@ -17,7 +17,27 @@ export const UserDetail = () => {
       id,
     },
   });
-  console.log(data);
 
-  return <h1>{data?.user.name}</h1>;
+  const username = data?.user?.name;
+  const useremail = data?.user?.email;
+  const userphone = data?.user?.phone;
+  const userbirthDate = data?.user?.birthDate;
+  const user_id = data?.user?.id;
+  const role = data?.user?.role;
+
+  return (
+    <section>
+      <h1>Detalhes do Usuário</h1>
+      <div>
+        <ul>
+          <li>Nome do Usuário: {username}</li>
+          <li>E-mail do Usuário: {useremail}</li>
+          <li>Telefone: {userphone}</li>
+          <li>Aniversario: {userbirthDate}</li>
+          <li>Id: {user_id}</li>
+          <li>Permissão: {role}</li>
+        </ul>
+      </div>
+    </section>
+  );
 };

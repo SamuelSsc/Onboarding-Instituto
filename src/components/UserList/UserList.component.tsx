@@ -14,8 +14,6 @@ import {
   Subtitle,
   Ul,
 } from './UserList.component.styled';
-import { useQuery } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
 
 export function UserList(): JSX.Element {
   const navigate = useNavigate();
