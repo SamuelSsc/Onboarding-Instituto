@@ -19,5 +19,5 @@ export const UserDetail = () => {
   });
   console.log(data);
 
-  return <h1>HELLO WORD</h1>;
+  return <h1>{data?.user.name}</h1>;
 };
