@@ -1,10 +1,12 @@
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import { Token } from 'graphql';
 import React, { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUsersquery } from '../../services/getUsersRequest';
 import { queryLogar } from '../../services/loginRequest';
-import { Button, Forms, Input, Label } from './login.component.style.ts';
+import { Button } from '../../styles/atm.btn_Logar_Cadastar';
+import { Input, Label } from '../../styles/mol.label_input';
+import { Forms } from '../../styles/org.form';
 
 function Login(): JSX.Element {
   const [email, setEmail] = useState('');

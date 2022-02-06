@@ -2,7 +2,10 @@ import { ApolloError, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserMutation } from '../../services/createUsersRequest';
-import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } from './AddUser.component.styled';
+import { Button } from '../../styles/atm.btn_Logar_Cadastar';
+import { Input, Inputdata, Label } from '../../styles/mol.label_input';
+import { Forms } from '../../styles/org.form';
+import { Align, ContainerInput, List } from './AddUser.component.styled';
 
 export const AddUser = () => {
   const today = new Date().toISOString().split('T')[0];

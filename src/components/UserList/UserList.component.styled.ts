@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Button } from '../Login/login.component.style.ts';
 
 export const Subtitle = styled.h3`
   text-align: center;
