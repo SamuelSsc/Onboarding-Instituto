@@ -45,23 +45,21 @@ export function UserList(): JSX.Element {
     },
   });
 
-  usersInformation = data?.users?.nodes?.map((users: { id: string; name: string; email: string }) => users);
-
-  const namesMapped = usersInformation?.map((users: usersType) => (
+  const namesMapped = data?.users?.nodes?.map((users: usersType) => (
     <Details>
       <BTNDetails onClick={() => UserDetails(users.id)}>Ver</BTNDetails>
       <p key={users.id}>{users.name}</p>
       <p>{users.id}</p>
     </Details>
   ));
-  const emailMapped = usersInformation?.map((users: usersType) => (
+  const emailMapped = data?.users?.nodes?.map((users: usersType) => (
     <Details>
       <p key={users.phone}>{users.email}</p>
     </Details>
   ));
 
-  let nextPageexists = data?.users?.pageInfo?.hasNextPage;
-  let previousPageexists = data?.users?.pageInfo?.hasPreviousPage;
+  const nextPageexists = data?.users?.pageInfo?.hasNextPage;
+  const previousPageexists = data?.users?.pageInfo?.hasPreviousPage;
 
   const nextPage = () => {
     setOfsset(offset + 10);
