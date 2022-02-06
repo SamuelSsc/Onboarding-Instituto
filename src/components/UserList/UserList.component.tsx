@@ -22,8 +22,6 @@ export function UserList(): JSX.Element {
     }
   };
 
-  let usersInformation;
-
   const token = localStorage.token;
   const limit = 12;
   const [offset, setOfsset] = useState(0);
@@ -39,10 +37,8 @@ export function UserList(): JSX.Element {
     },
   });
 
-  usersInformation = data?.users?.nodes?.map((users: { name: string; email: string }) => users);
-
-  const namesMapped = usersInformation?.map((users: usersType) => <p key={users.id}>{users.name}</p>);
-  const emailMapped = usersInformation?.map((users: usersType) => <p key={users.phone}>{users.email}</p>);
+  const namesMapped = data?.users?.nodes?.map((users: usersType) => <p key={users.id}>{users.name}</p>);
+  const emailMapped = data?.users?.nodes?.map((users: usersType) => <p key={users.phone}>{users.email}</p>);
 
   const nextPageexists = data?.users?.pageInfo?.hasNextPage;
   const previousPageexists = data?.users?.pageInfo?.hasPreviousPage;

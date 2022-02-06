@@ -1,12 +1,10 @@
-import { ApolloError, useMutation, useQuery } from '@apollo/client';
-import { Token } from 'graphql';
-import React, { useEffect, useState } from 'react';
+import { ApolloError, useMutation } from '@apollo/client';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUsersquery } from '../../services/getUsersRequest';
 import { queryLogar } from '../../services/loginRequest';
-import { Button } from '../../styles/atm.btn_Logar_Cadastar';
-import { Input, Label } from '../../styles/mol.label_input';
-import { Forms } from '../../styles/org.form';
+import { Button } from '../../styles/btnLogar_Cadastar.styled';
+import { Input, Label } from '../../styles/label.Input.styled';
+import { Forms } from '../../styles/Form.styled';
 
 function Login(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -22,8 +20,6 @@ function Login(): JSX.Element {
     onCompleted: (e: any) => {
       const tokenvalue = e.login.token;
       localStorage.setItem('token', tokenvalue);
-      const token = localStorage.token;
-
       alert('Bem Vindo Usuario!!');
       navigate('/userspage');
     },

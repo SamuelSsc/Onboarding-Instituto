@@ -2,9 +2,9 @@ import { ApolloError, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserMutation } from '../../services/createUsersRequest';
-import { Button } from '../../styles/atm.btn_Logar_Cadastar';
-import { Input, Inputdata, Label } from '../../styles/mol.label_input';
-import { Forms } from '../../styles/org.form';
+import { Button } from '../../styles/btnLogar_Cadastar.styled';
+import { Input, Inputdata, Label } from '../../styles/label.Input.styled';
+import { Forms } from '../../styles/Form.styled';
 import { Align, ContainerInput, List } from './AddUser.component.styled';
 
 export const AddUser = () => {
@@ -31,7 +31,7 @@ export const AddUser = () => {
       console.log(error);
     },
 
-    onCompleted: (e: any) => {
+    onCompleted: () => {
       alert('Usuario Cadastrado com Sucesso');
       navegation('/userspage');
     },
