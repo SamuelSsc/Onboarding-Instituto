@@ -17,7 +17,7 @@ function Login(): JSX.Element {
       console.log(error.message);
     },
 
-    onCompleted: (e: any) => {
+    onCompleted: (e) => {
       const tokenvalue = e.login.token;
       localStorage.setItem('token', tokenvalue);
       alert('Bem Vindo Usuario!!');

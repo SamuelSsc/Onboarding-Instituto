@@ -29,6 +29,7 @@ export const AddUser = () => {
 
     onError: (error: ApolloError) => {
       console.log(error);
+      alert('Seu Cadastro de Usuário deu erro, verifique as informações e tente novamente mais tarde');
     },
 
     onCompleted: () => {
