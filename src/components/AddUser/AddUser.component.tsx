@@ -2,7 +2,10 @@ import { ApolloError, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserMutation } from '../../services/createUsersRequest';
-import { Align, Button, ContainerInput, Forms, Input, Inputdata, Label, List } from './AddUser.component.styled';
+import { Button } from '../../styles/btnLogar_Cadastar.styled';
+import { Input, Inputdata, Label } from '../../styles/label.Input.styled';
+import { Forms } from '../../styles/Form.styled';
+import { Align, ContainerInput, List } from './AddUser.component.styled';
 
 export const AddUser = () => {
   const today = new Date().toISOString().split('T')[0];
@@ -26,9 +29,10 @@ export const AddUser = () => {
 
     onError: (error: ApolloError) => {
       console.log(error);
+      alert('Seu Cadastro de Usuário deu erro, verifique as informações e tente novamente mais tarde');
     },
 
-    onCompleted: (e: any) => {
+    onCompleted: () => {
       alert('Usuario Cadastrado com Sucesso');
       navegation('/userspage');
     },

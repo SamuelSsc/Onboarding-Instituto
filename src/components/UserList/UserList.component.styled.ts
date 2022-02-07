@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Button } from '../Login/login.component.style.ts';
 
 export const Subtitle = styled.h3`
   text-align: center;
@@ -49,7 +48,7 @@ export const BTNcreateusers = styled.button`
   border-radius: 8px;
   background-color: Black;
   width: 100px;
-  height: 25px;
+  height: 44px;
   color: white;
   margin: 10px;
 `;
