@@ -5,8 +5,10 @@ import { getUsersquery } from '../../services/getUsersRequest';
 import {
   BTNavegation,
   BTNcreateusers,
+  BTNDetails,
   Container,
   Contents,
+  Details,
   Header,
   Navegation,
   Subtitle,
@@ -22,10 +24,14 @@ export function UserList(): JSX.Element {
     }
   };
 
+  const UserDetails = (id: string | number) => {
+    navigate(`/userdetail/${id}`);
+  };
+
   let usersInformation;
 
   const token = localStorage.token;
-  const limit = 12;
+  const limit = 10;
   const [offset, setOfsset] = useState(0);
   const { data } = useQuery(getUsersquery, {
     context: {
@@ -39,20 +45,28 @@ export function UserList(): JSX.Element {
     },
   });
 
-  usersInformation = data?.users?.nodes?.map((users: { name: string; email: string }) => users);
-
-  const namesMapped = usersInformation?.map((users: usersType) => <p key={users.id}>{users.name}</p>);
-  const emailMapped = usersInformation?.map((users: usersType) => <p key={users.phone}>{users.email}</p>);
+  const namesMapped = data?.users?.nodes?.map((users: usersType) => (
+    <Details>
+      <BTNDetails onClick={() => UserDetails(users.id)}>Ver</BTNDetails>
+      <p key={users.id}>{users.name}</p>
+      <p>{users.id}</p>
+    </Details>
+  ));
+  const emailMapped = data?.users?.nodes?.map((users: usersType) => (
+    <Details>
+      <p key={users.phone}>{users.email}</p>
+    </Details>
+  ));
 
   const nextPageexists = data?.users?.pageInfo?.hasNextPage;
   const previousPageexists = data?.users?.pageInfo?.hasPreviousPage;
 
   const nextPage = () => {
-    setOfsset(offset + 12);
+    setOfsset(offset + 10);
   };
 
   const previusPage = () => {
-    setOfsset(offset - 12);
+    setOfsset(offset - 10);
   };
 
   return (
